@@ -42,7 +42,10 @@ def resize(files: List[str], \
 
             else:
                 bg = im
-            bg = bg.convert('RGB')
+            try:
+                bg = bg.convert('RGB')
+            except OSError:
+                continue
             fname, _ = os.path.splitext(os.path.basename(f))
             out = os.path.join(outpath, fname + '.jpg')
             bg.save(out)
