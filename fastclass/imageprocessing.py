@@ -33,7 +33,7 @@ def resize(files: List[str], \
             if (should_resize):
                 try:
                     im.thumbnail(size, Image.ANTIALIAS)
-                except OSError:
+                except:
                     # skip truncated files
                     continue
 
@@ -44,7 +44,7 @@ def resize(files: List[str], \
                 bg = im
             try:
                 bg = bg.convert('RGB')
-            except OSError:
+            except:
                 continue
             fname, _ = os.path.splitext(os.path.basename(f))
             out = os.path.join(outpath, fname + '.jpg')
